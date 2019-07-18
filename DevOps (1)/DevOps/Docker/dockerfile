@@ -1,0 +1,47 @@
+FROM centos:centos7.1.1503
+RUN yum clean all && yum -y swap fakesystemd systemd
+RUN yum update /y
+#RUN yum -y install lsb
+RUN yum -y install vim nano wget rsync mlocate
+RUN updatedb
+#RUN rpm -e fakesystemd-1-17.el7.centos.noarch
+RUN yum -y install lsb git
+RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jdk-8u66-linux-x64.tar.gz"
+RUN tar -xvf jdk-8u66-linux-x64.tar.gz 
+RUN mkdir -p /tools
+RUN rsync -avx jdk1.8.0_66 /tools/
+env JAVA_HOME=/tools/jdk1.8.0_66
+env PATH=$JAVA_HOME/bin:$PATH
+ADD fmw_12.2.1.0.0_wls.jar /tmp/
+ADD orainstall.loc /tmp/
+ADD invfile /tmp/invfile
+RUN useradd -b /home/ -m -s /bin/bash oracle
+#RUN groupADD oracle
+RUN gpasswd -a oracle oracle
+RUN mkdir -p /tools/bea1221
+RUN chown oracle -R /tools/bea1221
+ADD apache-ant-1.9.6.tar /tools/
+ADD oracle-12102.tar /tools/
+RUN chmod +x /tools/apache-ant-1.9.6/bin/ant
+RUN mkdir -p /root/.ssh
+ADD .ssh /root/.ssh
+RUN mkdir /tools/ilog88
+ADD ilog88 /tools/ilog88
+RUN mkdir /tools/SCPO
+RUN mkdir /tools/bld_scripts
+ADD bld_scripts /tools/bld_scripts/
+RUN mkdir /tools/ZIPS/
+ADD ZIPS /tools/ZIPS/
+#volume /data/
+#RUN ls -ltrah /data
+#Build Properties
+#RUN tar -xvf apache-ant-1.9.6.tar
+#RUN tar -xvf /tmp/oracle-12102.tar
+#RUN rsync -avx apache-ant-1.9i.6 /tools/apache-ant-1.9.6/
+#RUN rsync -avx ./oracle /tools/
+#RUN "$JAVA_HiOME/bin/java -jar /tmp/fmw_12.2.1.0.0_wls.jar -invPtrLoc /tmp/orainstall.loc -jreLoc $JAVA_HOME -ignoreSysPrereqs -force -novalidation ORACLE_HOME=/tools/bea1221" -oracle
+
+RUN su -m oracle -c "$JAVA_HOME/bin/java -jar /tmp/fmw_12.2.1.0.0_wls.jar -silent -responseFile /tmp/orainstall.loc -invPtrLoc /tmp/invfile -jreLoc $JAVA_HOME -ignoreSysPrereqs -force -novalidation ORACLE_HOME=/tools/bea1221"
+ADD build.sh build.sh
+RUN chmod +x /build.sh
+RUN ls -ltrah /

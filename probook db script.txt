@@ -1,0 +1,34 @@
+mysqldump -u xxxxx -p xxxxx redmine 
+
+mysqldump -u root -p P@$$@R3DM!N3 redmine 
+
+tar -xvzf /home/sonata/Backup_Redmine/2019-05-08/Redmine_Prod_2019-05-08-121348.tar.gz
+
+urce/directory username@destinationhost.com:/destination/folder
+
+scp -rP 2020 /the/source/directory username@destinationhost.com:/destination/folder
+
+scp -rP 2020 redmine sonata@172.29.67.25:/var/data/
+
+----------------------------------------------------------------------
+rsync -avzh --dry-run --update -e "ssh -p 2020" /var/data/redmine/ root@172.29.67.25:/var/data/redmine
+
+
+
+rsync -avzh --update -e "ssh -p 2020" /var/data/redmine/ root@172.29.67.25:/var/data/redmine
+
+/home/sonata/dailydataaddscript.sh
+
+
+DB:
+atabase:
+---------
+
+
+rm -rf /tmp/redmine.sql 
+
+mysqldump -u root  -p'P@$$@R3DM!N3' redmine >/tmp/redmine.sql 
+
+scp -P 2020 -r /tmp/redmine.sql root@172.29.67.25:/tmp/
+
+mysql -u root -p'P@$$@R3DM!N3' redmine < /tmp/redmine.sql 

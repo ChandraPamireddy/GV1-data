@@ -1,0 +1,99 @@
+
+Probook Test Server:
+-------------------------
+IP:  172.29.67.25
+Login: rootsonata
+Pswd: sonata@123
+Host Server -  BGLBG4PHS029 
+
+
+Probook Production server:
+-------------------------
+IP: 172.29.67.94
+Port: 2020
+OS: Ubuntu 14.04.2-server-amd64
+Username: sonata
+Password: Sonata@123
+
+-----------------------------------------------------------
+
+Backup Script:
+-----------
+
+# /usr/bin/PRObook_backup.sh
+# !ensure that this file cannot be read by others, only by root,
+# as it contains probook database credentials!
+DATE=`date +"%Y-%m-%d"`
+FILEDATE=`date +"%Y-%m-%d-%H%M%S"`
+BACKUP_DIR=/home/sonata/backups
+DB_USER="root"
+DB_PASS='P@$$@R3DM!N3'
+REDMINE_HOME=/var/data/redmine
+#SHARE=/windows-probook
+DB_CHARSET=utf8
+
+# delete old backups
+#find $BACKUP_DIR -maxdepth 1 -type d -mtime +6 -exec rm -rf {} \;
+rm -rf $BACKUP_DIR/*
+create backup dir
+mkdir -p $BACKUP_DIR/$DATE
+
+# backup db
+#mysqldump -u $DB_USER -p${DB_PASS} --single-transaction --default-character-set=${DB_CHARSET} redmine | gzip > $BACKUP_DIR/${DATE}/mysql.gz
+mysqldump -u"${DB_USER}" -p"${DB_PASS}" redmine | gzip > $BACKUP_DIR/${DATE}/Redmine_Prod_${FILEDATE}.gz
+
+# backup redmine
+tar -cvzf $BACKUP_DIR/${DATE}/Redmine_Prod_$FILEDATE.tar.gz -C $REDMINE_HOME .
+
+#mv $BACKUP_DIR/* $SHARE
+---------------------------------------------------------------------------------
+http://adept-gitsource.sonata-software.com/Kartopia/Shamrock/cms.git
+
+
+sonata@BGLBG1ENGTVM03:~/db-backup$ cat mysql-db.backup-restore.sh
+#!/bin/bash
+
+# database credentials
+DBUSR="root"
+DBUSR_NONPROD="redmine"
+DBPW='P@$$@R3DM!N3'
+DBNAME="redmine"
+#CHECK="ip a"
+###BACKUP LOCATIONS######
+DIR=/tmp/redmine.sql
+NONPRODHOST=172.29.67.25
+
+############BACKUP FUNCTION###
+
+BACKUP() {
+
+        mysqldump -u"${DBUSR}" -p"${DBPW}" $DBNAME > $DIR
+
+}
+
+###########RESTORE FUNCTION###############
+RESTORE() {
+#       mysql -u $DBUSR -p'P@$$@R3DM!N3' $DBNAME < $DIR
+        mysql -h $NONPRODHOST -u"${DBUSR_NONPROD}" -p"${DBPW}" $DBNAME < $DIR
+}
+
+
+####BACKUP & RESTORATION##################
+if [ -f "$DIR" ]; then
+
+        echo "Please remove OLD file  `$DATA`"
+        rm -rf $DIR
+        echo "Re run it again to complete the Backup"
+        exit
+else
+        echo "No OLD file"
+        echo "Starting Backup........."
+        echo "Generating new Backup at `date` `BACKUP`"
+        echo "New Backup file is created  at `date` `ls -l $DIR`"
+        echo "Backup Completed"
+        echo "Restoring Database at `date` `RESTORE` "
+        echo "Restoration Completed at `date` `rm -rf $DATA`"
+fi
+
+
+-------------------------------------------

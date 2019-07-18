@@ -1,0 +1,103 @@
+http://172.29.91.19/xtpsaas/branches/DEV_7_1_1000@HEAD
+
+http://chandramoule.p:Sonata~123@adept-gitsource.sonata-software.com/Kartopia/cpl/ecom.git
+http://adept-gitsource.sonata-software.com/Kartopia/cpl/ecom.git
+
+git clone https://username@bitbucket.org/repositoryName.git --depth 1
+
+ps aux --sort -rss 
+
+
+java -jar slave.jar -jnlpUrl http://172.28.60.151/computer/BuildPackage/slave-agent.jnlp -secret 337747af23a92e2559327028da662949fa5ad56a005a662d743536b9eb8afcf6
+
+
+jenkins  ALL=(ALL) NOPASSWD: ALL
+
+Sonata  ALL=(ALL) NOPASSWD: ALL
+http://adept-gitsource.sonata-software.com/Kartopia/cpl/ecom.gi12:40pm
+sudo rm -rf /var/opt/gitlab/backups/*
+
+
+
+azureuser ALL = (ALL) NOPASSWD: ALL
+
+usr/bin/gitlab-rake error: could not load /opt/gitlab/etc/gitlab-rails/gitlab-rails-rc
+Either you are not allowed to read the file, or it does not exist yet.
+You can generate it with:   sudo gitlab-ctl reconfigure
+mv: try to overwrite ‘/home/windows-git/1552315380_2019_03_11_11.2.3_gitlab_backup.tar’, overriding mode 0555 (r-xr-xr-x)? SSH: Disconnecting configuration [ADEPT-GitSource] ...
+ERROR: Exception when publishing, exception message [Exec timed out or was interrupted after 169,496 ms]
+Build step 'Send files or execute commands over SSH' changed build result to UNSTABLE
+
+
+
+
+
+http://http://172.29.67.10/Kartopia/cpl/ecom.git
+http://http://172.29.67.10/Halosys/Halosys_Engg_Off.git
+
+http://172.29.67.10/SAP_Tetrapack_EC/Tetrapak_OFPM.git
+
+
+http://chandramoule.p:Sonata~123@172.29.67.10/SAP_Tetrapack_EC/Tetrapak_OFPM.git
+
+//172.29.42.52/bglbg1engtvm01_bkp/Gitsource-bkp-11.2.3
+/home/windows-git
+
+
+
+Gitsource-bkp-11.2.new
+
+//172.29.42.52/bglbg1engtvm01_bkp/Gitsource-bkp-11.2.new  /windows-git       cifs    credentials=/etc/cifs.secret 0 0
+
+
+sudo find /adept/controlarea/Gitsource-bkp-11.2.3/ -type d -mtime +0 | sudo xargs rm -rf
+
+
+sudo sshpass -p "sonata@123" scp -P 22 -vr sonata@172.29.42.243:/var/opt/gitlab/backups/*.tar .
+pwd
+
+sudo cp -r *_gitlab_backup.tar /adept/controlarea/Gitsource-bkp-11.2.3/
+
+
+27 28 01
+
+
+---------------------------
+sudo find /adept/controlarea/Gitsource-bkp-11.2/ -type d -mtime +0 | sudo xargs rm -rf
+
+sudo sshpass -p "sonata@123" scp -P 22 -vr sonata@172.29.67.55:/var/opt/gitlab/backups/*.tar .
+pwd
+
+sudo find /adept/controlarea/GitSource-bkp-7.10.0 -type d -mtime +0 | sudo xargs rm -rf
+sudo cp -r *_gitlab_backup.tar /adept/controlarea/GitSource-bkp-7.10.0/
+
+npci
+
+http://172.29.67.11/SAP_Tetrapack_EC/Tetrapak_OFPM.git
+
+
+Backup settings
+  backup:
+    path: "/var/opt/gitlab/backups"   # Relative paths are relative to Rails.root (default: tmp/backups/)
+    archive_permissions: 777 # Permissions for the resulting backup.tar file (default: 0600)
+    keep_time:    # default: 0 (forever) (in seconds)
+    pg_schema:    # default: nil, it means that all schemas will be backed up
+
+	Dinesh Pratahkal
+	
+	
+	http://chandramoule.p:Sonata~123@172.29.42.243/SAP_Tetrapack_EC/Tetrapak_OFPM.git
+	http://chandramoule.p:Sonata~123@172.29.42.243/Sonata/Platform/Organization_Hierarchy.git
+	http://chandramoule.p:Sonata~123@172.29.42.243/Kartopia/Completed_Projects/Hasti/cms.git
+	http://adept-gitsource.sonata-software.com/Sonata/Platform/Organization_Hierarchy.git
+	
+	
+	http://adept-gitsource.sonata-software.com
+	http://172.29.42.243
+	
+	http://172.29.42.243/SAP_Tetrapack_EC/Tetrapak_OFPM-new.git
+	
+547730
+
+
+137211

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# /usr/bin/PRObook_backup.sh
+# !ensure that this file cannot be read by others, only by root,
+# as it contains probook database credentials!
+DATE=`date +"%Y-%m-%d"`
+FILEDATE=`date +"%Y-%m-%d-%H%M%S"`
+BACKUP_DIR=/home/sonata/backups
+DB_USER="root"
+DB_PASS='P@$$@R3DM!N3'
+REDMINE_HOME=/var/data/redmine
+#SHARE=/windows-probook
+DB_CHARSET=utf8
+
+# delete old backups
+#find $BACKUP_DIR -maxdepth 1 -type d -mtime +6 -exec rm -rf {} \;
+rm -rf $BACKUP_DIR/*
+create backup dir
+mkdir -p $BACKUP_DIR/$DATE
+
+# backup db
+#mysqldump -u $DB_USER -p${DB_PASS} --single-transaction --default-character-set=${DB_CHARSET} redmine | gzip > $BACKUP_DIR/${DATE}/mysql.gz
+mysqldump -u"${DB_USER}" -p"${DB_PASS}" redmine | gzip > $BACKUP_DIR/${DATE}/Redmine_Prod_${FILEDATE}.gz
+
+# backup redmine
+tar -cvzf $BACKUP_DIR/${DATE}/Redmine_Prod_$FILEDATE.tar.gz -C $REDMINE_HOME .
+
+#mv $BACKUP_DIR/* $SHARE

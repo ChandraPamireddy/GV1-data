@@ -1,0 +1,16 @@
+for simple docker training with basics 
+https://www.tutorialspoint.com/docker/index.htm
+https://www.tutorialspoint.com/docker/docker_tutorial.pdf
+
+for docker-compose
+https://www.tutorialspoint.com/docker/docker_compose.htm
+
+kubernates
+https://www.tutorialspoint.com/kubernetes/
+
+for different type of docker files---->>>>>>
+https://github.com/jessfraz/dockerfiles
+
+
+https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/

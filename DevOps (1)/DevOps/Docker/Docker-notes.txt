@@ -1,0 +1,53 @@
+Docker:
+https://confluence.jda.com/display/wms/Oracle+CI+Using+Docker 
+https://confluence.jda.com/display/~j1013575/Create+docker+instance
+https://confluence.jda.com/display/wms/Linux+Docker+Dev+Environment 
+https://confluence.jda.com/display/wms/Docker+Package+Build+Testing 
+http://confluence.jda.com/display/pkg/Development+and+Build+Process+Guidelines
+
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jdk-8u66-linux-x64.tar.gz"
+ds-6440
+ds-12235
+ds-9765
+docker rm $(docker ps -aq)
+docker rmi $(docker images -q)
+
+
+pbuilds
+
+1)	An image is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files.
+2)	A container is a runtime instance of an image--what the image becomes in memory when executed (that is, an image with state, or a user process). 
+3)	You can see a list of your running containers with the command, "docker ps"
+4)	A container runs natively on Linux and shares the kernel of the host machine with other containers.
+	docker --version
+	docker info
+	docker run hello-world
+	docker image ls
+	docker container ls --all
+	docker build -t friendlyhello .
+	docker-machine ip
+	docker run -p 4000:80 friendlyhello
+	docker container ls
+	docker container stop <Container NAME or ID>
+	docker run -d -p 4000:80 friendlyhello
+	docker container stop 1fa4ab2cf395
+	docker login
+	docker tag image username/repository:tag
+	docker push username/repository:tag
+	docker run -p 4000:80 username/repository:tag
+	docker container stop <hash> 
+	docker container kill <hash>
+	docker container rm <hash>
+	docker container rm $(docker container ls -a -q)
+	docker image ls -a
+	docker image rm <image id>
+	docker image rm $(docker image ls -a -q)
+	
+	
+5) Dockerfile defines what goes on in the environment inside your container
+{
+	"dns": ["your_dns_address", "8.8.8.8"]
+}
+The notation for associating a local image with a repository on a registry is username/repository:tag
+
+A docker-compose.yml file is a YAML file that defines how Docker containers should behave in production.

@@ -1,0 +1,178 @@
+date -s "+15mins"
+
+ip addr show
+ifconfig
+w/who --> who logged in
+uptime
+ps --> list the process
+rpm -qa --> list all packages
+rpm -ivh package.rpm
+rpm -qi packagename --> check the package installed or not--
+> all infor of packahe including version etc
+rpm -ql <packagename> 
+	rpm -e packagename --> remove package
+	
+	
+	
+for i in 1..100
+for ((i=1;$i<=10;i++)) ; do echo $i ; sleep 1 ; done
+
+ps -ef|grep top
+kill -9 process id
+pgrep thread --> get process id
+ps -ef|grep thread
+
+kill, pkill, pgrep, killall
+
+head flename --> display first/top 10 lines
+head -n 15 filename --> display first 15 lines
+tail --> bottom 10 files
+more --> displays contenet page wise
+less --> displayes content page wise and will go up/bottom and seacrh pattern
+
+grep network anakonda-ks.cfg --> search only nework pattern
+grep -n anakonda-ks.cfg --> search only nework pattern along with line numbers
+grep -n anakonda-ks.cfg  --> count of pattren
+
+find / -name ifconfig
+find / -name "*ifconfig*"
+
+find / -size +10M --> find files more than 10 MB in the file system
+
+egrep "^root" /etc/password --> root should be starting of the line
+egrep "bus" /etc/password --> search onlu bus with any words
+egrep -w "bus" /etc/password --> serch only  exact word is bus in the file
+egrep "centsos$" anakonda-ks.cnf --> search centos at the end of the line
+j-> onestep down
+10j-> 10 lines down
+k -> one line up
+10k -> 10 lines up
+h -> one step(characters) move to left
+l -> one step(characters) move to right
+b-> to rhe begining of the previous word
+e -> ending of next word
+gg -> will take the first line of the file
+G -> fnd of the file
+ctrl+g --> shows the cursor position
+
+H -> got to top of the screen
+
+M -> middle of the screen
+
+L -> lower of the screen
+
+yy-> copu current line 
+yw -> copies one word
+yl -> copies one character
+
+p -> print thr line
+dd -> delete the line
+2dd -> delete 2 lines
+dw -> delete one word
+dl or x --> delete one character
+
+wq or x --> save and quit
+
+find pattern and replace it other pattren
+------------------------------------
+yum repolist --> shows all repos configured
+yum info wget -> dowm package from internet --> information abt packages
+cd /etc/yum.repos.d
+yum install wget --> install package
+
+install mongodb
+1. create repo and add mogodb dependency packages
+yum search mongodb
+yum install mongodb-org-server
+
+syslog-ng --> it is a package and send logfile to all remote server
+yum info syslog-ng
+
+Install syslog-ng on Centos7
+yum install epel-release -y --> create epel repo
+yum repolist
+yum search syslog-ng
+yum install syslog-ng
+-----------------------
+
+useradd john
+echo $SHELL --> by default /bin/bash
+usermod -s /bin/ksh john --> change the shell
+userdel john --> delete user account
+userdel -r john --> delete user account along with home directory
+
+groupadd dev --> 
+cat /etc/group
+useradd -G dev chris  --> created user and add chris into dev group
+visudo --> change super sudo prieleges to user
+useradd -d /opt/kiran kiran --> change the user directory
+--------------------------
+init 0/shotdown -h now/poweroff/ --> power down the machine
+init 6/reboot --> reboot the machine
+
+how to disply devices/harddisk connect to the system
+fdisk -l -->
+create partition
+fdisk /dev/sdb
+type n -> add new partition
+type p -> primary partition
+first sectot -> lave it default
+last sector -> type +5G ->set 5GB space
+and create another partition for 3GB
+type w-> save 
+
+create file system
+xfs -> it is latest version default filesystem type
+mkfs -t xfs /dev/sdb1
+mkfs -t ext4 /dev/sdb2
+
+Mount:
+mount /dev/sdb1 /mnt/
+mount /dev/sdb2 /media/
+
+where /mnt/ and /media/ is mount point
+
+mount this permanently
+vi /etc/fstab
+/dev/sdb1   /mnt/  xfs  defaults  1 1 
+/dev/sdb1   /media/  ext4  defaults  1 1 
+
+:wq -> save & quit
+mount -a
+----------------------------------------------
+netstat -anltp --> portnuber  find
+cd /var/www/html
+vi test.html
+<h1> Hello world </h1>
+:wq
+
+check on brwser
+<ip>/test.html
+
+logs:
+cd /var/log/httpd
+access.log and error.log files
+
+------------------------------------------------
+553.77
+1007.97
+
+0000000000036623191
+-------------------------------
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+

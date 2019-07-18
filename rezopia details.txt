@@ -1,0 +1,56 @@
+Rezopia:
+
+Linux Machine
+172.28.60.152
+root
+sonata@123
+
+http://172.28.60.152:8080
+
+
+
+http://adept-rez-codeplay.sonata-software.com/view/V2-Rezopia-Trunk-Pipleline/builds
+
+SonarQube :- http://172.28.60.153/
+Nexus :- http://172.28.60.154/
+
+
+VM hosted on : BGLBG3PHS001
+Location              : RMR
+
+REZ VM’s are as below:
+VM hosted on : BGLBG3PHS001
+Location              : RMR
+
+BG3PHS001VMREZ1
+BG3PHS001VMREZ2
+BG3PHS001VMREZ3
+BG3PHS001VMREZ4
+BG3PHS001VMREZ5
+
+BG3PHS001VMREZ1 - Windows server  -172.28.60.151
+administrator/sonata@123
+BG3PHS001VMREZ2 -  Ubuntu               - 172.28.60.152
+BG3PHS001VMREZ3  - Ubuntu              - 172.28.60.153
+sonata/sonata@123
+BG3PHS001VMREZ4  - Ubuntu              - 172.28.60.154
+sonata/sonata@123
+BG3PHS001VMREZ5  - Ubuntu            - 172.28.60.155
+sonata/sonata@123
+
+----------------------------------------------
+latest version of Rezopia code which is REL_7_2_2014 for Jenkins build
+please compile in following order:
+
+XTP.Travel.Services
+XTP.Web.Travel
+XTP.Web.CallCenter
+XTP.Web.Admin
+XTP.Web.Reports
+XTP.Web.Supplier
+
+
+java -jar slave.jar -jnlpUrl http://adept-rez-codeplay.sonata-software.com/computer/BuildPackage/slave-agent.jnlp -secret 337747af23a92e2559327028da662949fa5ad56a005a662d743536b9eb8afcf6
+
+
+chrome://downloads/

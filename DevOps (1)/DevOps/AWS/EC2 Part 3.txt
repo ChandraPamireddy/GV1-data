@@ -1,0 +1,123 @@
+Volumme Types  :
+
+/dev/hda    ---  IDE/PATA
+/dev/sda    ---  SATA/SCSI
+/dev/xvda   ---  Virtual disks     ---->  /dev/xvda1   -- First Partition
+					  /dev/xvda2   -- Second Partition
+/dev/xvdb   ---  
+
+df -h   ---- to check all mount points
+
+fdisk -l   ---  To check how many volumes are attached
+fdisk /dev/xvdf   ---- make sure that give right disk name
+m   for help
+n  -- to add new partition
+p  -- to partion type
+1 or just enter  --  to select parition number
+just enter from start and end sector
++3G or +2G or what ever size you want here.
+w  --   write all changes to here
+
+Now check for new disk
+
+fdisk -l
+
+Now we have to create file system here i can format it using below command to check file system
+
+mkfs   --- type this and check diff types file systems are available and in linux always go wwith ext4
+file -s /dev/xvdf1  --- to check for file system
+mkfs.ext4 /dev/xvdf1
+
+we are going to mount it now
+
+mkdir /opt/datadir
+mount /dev/xvdf1 /opt/datadir/
+df -h  -- to check for all mount points.
+cd /opt/datadir
+ls
+data+lost   should br found if it is new 
+
+It is called temporary mount point if you reboot this system this mount can be gone
+
+How to create permanant mount
+
+cat /etc/fstab
+
+/dev/xvdf1	/opt/datadir	ext4	defaults	0 0
+
+:wq
+now run command below one
+If you want to unmount current one
+umount /dev/xvdf1 /opt/datadir
+df -h    --- it has to be removed
+mount -a
+
+cd /opt/datadir
+create some files and folders
+touch file1 file2 file3
+mkdir dir1 dir2 dir3
+ls 
+file1 file2 file2 dir1 dir2 dir3
+
+cd
+
+now unmount your volume
+umount /dev/xvdf1 /opt/datadir
+
+cd /opt/datadir
+ls
+nothing wil be available
+
+cd
+mount -a
+cd /opt/datadir
+ls 
+file1 file2 file2 dir1 dir2 dir3
+
+so always root volume can not have your data it is available for os related data
+so if we need any kind of data we have to create our own volume
+df -h
+
+cd /opt/datadir
+umount /opt/datadir - It cant be un mount since we are in same location so it is busy
+that time if we want to know about the running process
+lsof /opt/datadir   - It can show us what are the processes are currently running so we can kill them 
+                      using below command   --- kill -9 processid
+fuser /opt/datadir  - This also show same output like about running processes
+
+This is the better way to unmount rather than doing force unmount
+
+
+step1. List the Partitions/Volumes using command    ----->  lsblk
+step2. we checked in if there is any file system on the volume/Partition  ---->  file -s /dev/xvdf
+step3. We created a new file system on the new Volume/Partition (only if it is empty) ----> mkfs -t ext4 /dev/xvdf      ---> t - type of file system (ext4)
+step4. Traverse back to the root directory/folder and then create a new directory  ----> mkdir /fileserver
+step5. Mounted the new Volume/Partition to the fileserver directory  ----> mount /dev/xvdf /fileserver
+        --- > If you use this command to mount it will unmount when you reboot your system   --- Temporary Mount
+        ----> For Permanant Mount point  and we should always permanant mount using below file and run some command  'mount -a'
+
+              There is a file called ---- cat /etc/fstab
+                                          vi /etc/fstab
+                                          /dev/xvdf1	/fileserver	ext4	0 0       -----   0 0 dump code and fsc code of file system to check cod, 
+                                                                                                  0 means when we reboot it will not file systemand and dont take any dump when crash it
+
+              mount -a 
+step6. check into fileserver directory/folder and see thet files are available    --- >   cd fileserver ------>  ls -lrt
+step7. Only one file Lost+found was available and we can create our file now any two using vi editor or nano editor commands
+step8. Once created recheck the directory/folder usinng 'ls' command 
+step9. Traverse back to the root directory/folder then unmount the Volume/Partition	---->  umount /dev/xvdf    ---> umonut /dev/xvdf -l   ---->  -l means lazy mount or we can unmount forcefully but dont go alwasy with this option
+
+        or other use case we can do here 
+	- Just go to our create file system     cd /fileserver
+	- and delete everything 		rm -rf *    (before this we have to create snapshot this is important)
+	- and then unmount disk			umount /dev/xvdf
+	- Then we can detach from volumes sections from our instance.
+	- Then we have to assign new volume which was created  by snapshot
+step10. Now we created snapshot of this volume.
+
+Volumes Use cases  :
+
+1. Backup & Restore
+2. Change Volume type   ---> You can change the volume type form magnatic or SSD
+3. Change Zone
+4. Change size          ---> You can change the size of EBS (Elastic Block Storage) volumne ( Increase or Decrease )

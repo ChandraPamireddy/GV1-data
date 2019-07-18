@@ -1,0 +1,58 @@
+VM name            : BG4PHS025RAPIDVM2 
+IP                            : 172.29.79.70 
+User name          : sonata 
+password            : son@t@123 
+User name          : root (Use this only when required) 
+password            : pass@word1  
+Mysql:  root 
+sonata@123
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bugs               |
+| mysql              |
+| powertools         |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+[root@localhost sonata]# cd /tmp
+[root@localhost tmp]# mysqldump -u root -p information_schema > testops2204.sql
+Enter password:
+mysqldump: Got error: 1045: Access denied for user 'root'@'localhost' (using password: YES) when trying to connect
+[root@localhost tmp]#
+
+
+mysqldump --opt -h localhost -u root -psonata@123 information_schema | gzip > backup.gz
+mysqldump: Got error: 1045: Access denied for user 'user'@'localhost' (using password: YES) when trying to connect
+
+
+
+mysqldump --single-transaction -u root -psonata@123 information_schema > backup.sql
+
+mv /home/sonata/backup/*.sql  /databasebkp
+
+//172.29.42.52/bglbg1engtvm01_bkp/testopsbkp /databasebkp    cifs    credentials=/etc/cifs.secret 0 0
+root@adept-gitsource:~# cat /etc/cifs.secret
+username=tools.group
+password=password$1
+domain=sonata
+root@adept-gitsource:~#
+mv /tmp/*.sql  /databasebkp
+
+mysqldump --single-transaction -u root -psonata@123 powertools | gzip > ~sonata/backup/db.$(date +%F.%H%M%S).sql.gz
+/home/sonata/backup/testopsbkp.sh
+
+http://172.29.42.24/Gitlab/Documents.git
+URL is blocked: Requests to localhost are not allowed
+
+
+Regulatory and compliance restriction
+
+i presume that every body has to created
+MOULESWARA REDDY PAMAREDDY

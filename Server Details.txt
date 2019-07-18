@@ -1,0 +1,71 @@
+JENKINS:
+---------
+
+IP: 172.29.67.69
+OS: Ubuntu 14.04.2-server-amd64
+RAM: 4GB
+HDD: 300GB
+Username: sonata
+Password: P@$$hyb
+
+http://172.29.67.69/view/ADEPT/view/Tools%20Backup%20Dashboard/
+
+-----------------------------------------------------------------------------------------------------
+
+//172.29.42.52/bglbg1engtvm01_bkp
+
+
+
+\\172.26.42.63\adept
+
+
+ashareddy369
+
+$Rangareddy3
+$Nanireddy3
+
+
+
+root@BG4HYDHYBVM03:/var/lib/jenkins/jobs/ADEPT-Tools/jobs/ADEPT-PRObook/workspace
+
+ERROR: Exception when publishing, exception message [Exec exit status not zero. Status [1]]
+Build step 'Send files or execute commands over SSH' changed build result to UNSTABLE
+
+
+243 server:
+
+echo "sonata ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+
+
+
+
+------------------------------
+
+System information
+System:         Ubuntu 14.04
+Current User:   git
+Using RVM:      no
+Ruby Version:   2.1.6p336
+Gem Version:    2.2.1
+Bundler Version:1.5.3
+Rake Version:   10.4.2
+Sidekiq Version:3.3.0
+
+GitLab information
+Version:        7.10.0
+Revision:       a651951
+Directory:      /opt/gitlab/embedded/service/gitlab-rails
+DB Adapter:     postgresql
+URL:            http://sonata-Virtual-Machine
+HTTP Clone URL: http://sonata-Virtual-Machine/some-project.git
+SSH Clone URL:  git@sonata-Virtual-Machine:some-project.git
+Using LDAP:     yes
+Using Omniauth: no
+
+GitLab Shell
+Version:        2.6.2
+Repositories:   /var/opt/gitlab/git-data/repositories
+Hooks:          /opt/gitlab/embedded/service/gitlab-shell/hooks/
+Git:            /opt/gitlab/embedded/bin/git
+

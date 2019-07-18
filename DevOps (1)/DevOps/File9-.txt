@@ -1,0 +1,5 @@
+FROM nginx:latest
+WORKDIR /usr/share/nginx/html
+#Where you are building the image, makesure you should place the index.html file at that location, it will copy index.html file from current director
+y location to WORKDIR location of the container.
+COPY index.html index.html

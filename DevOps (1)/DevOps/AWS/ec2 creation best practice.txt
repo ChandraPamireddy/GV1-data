@@ -1,0 +1,16 @@
+Requirements gathering
+
+1. OS
+2. Size (Memory, CPU, Storage, Network)
+3. Softwares
+4. Services (Protocols & Port numbers)
+5. Logins
+6. Environment
+7. Owner
+
+
+Steps to create EC2 instance Best Practice
+
+1. Setup KeyPair
+2. Setup Security Group
+3. Launch Instance

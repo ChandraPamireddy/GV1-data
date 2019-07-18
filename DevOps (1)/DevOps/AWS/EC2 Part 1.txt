@@ -1,0 +1,19 @@
+
+SSD | Magnetic Drives
+
+
+SSD:  solid storage disks
+	General Purpose SSD (gp2) ---> less than 10000 IOPS
+	Provisioned IOPS SSD (io1) --> more than 10000 IOPS 
+	
+								   IOPS (Input Output Per Second)
+
+Magnetic Drives:
+	Throughput Optimized HDD (st1) 
+	Cold HDD (sc1)
+	Magnetic Standard
+	
+	
+Login into EC2 Instance:
+	Windows Machine  					----> PUTTY      (.ppk)
+	Macbook or Any Linux Machine        ----> Terminal   (.pem)

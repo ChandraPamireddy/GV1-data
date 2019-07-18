@@ -1,0 +1,30 @@
+
+ Security Groups
+ Instance Metadata
+ Windows Instance
+	
+	
+sudo su (elevating the privileges to ROOT User)
+yum update -y (update security patches if any)
+
+
+yum install httpd -y (Install httpd service)
+service httpd start (To start httpd service)
+service httpd stop (To stop my httpd service)
+service httpd restart (To restart my httpd service)
+/var/www/html/ (Root directory of the Apache HTTP Server)
+
+curl http://169.254.169.254/latest/meta-data/   (Accessing the URL)
+
+
+nano editor to create index.html file ----> nano index.html
+save the file ---> ctrl+x  -- Y -- Enter Key
+
+
+Custom Security Group:
+	Inbound  <---  All Traffic is denied, that is no rules are applied
+	OutBound --->  All Traffic is allowed
+
+Default Security Group:
+	Inbound  <--- All Traffic is allowed, but with the Instances that share same security Group
+    OutBound ---> All Traffic is allowed

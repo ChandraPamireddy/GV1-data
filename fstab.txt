@@ -1,0 +1,6 @@
+//172.29.42.52/bglbg1engtvm01_bkp/Gitsource-bkp-11.2.o  /windows-git       cifs    credentials=/etc/cifs.secret 0 0
+
+//172.29.42.52/bglbg1engtvm01_bkp/Gitsource-bkp-11.2  /windows-git       cifs    username=tools.group,password=password$1,domain=sonata 0 0
+
+username=tools.group,password=password$1,domain=sonata
+

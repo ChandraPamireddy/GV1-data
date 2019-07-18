@@ -1,0 +1,136 @@
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh lib/
+5.3M    lib/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh Rakefile
+4.0K    Rakefile
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh test/
+3.2M    test/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh CONTRIBUTING.md
+4.0K    CONTRIBUTING.md
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh vendor
+4.0K    vendor
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh config
+2.7M    config
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh tmp/
+14M     tmp/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh doc/
+200K    doc/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh date_validator_ror-0.9.0/
+132K    date_validator_ror-0.9.0/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh Gemfile
+4.0K    Gemfile
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh config.ru
+4.0K    config.ru
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh plugins/
+33M     plugins/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh extra/
+188K    extra/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh public/
+39M     public/
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh log/
+1.6G    log/
+
+
+
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh log/
+1.6G    log/
+
+root@BGLBG1ENGTVM03:/var/data/redmine# du -ksh files/
+69G     files/
+
+	root@BGLBG1ENGTVM03:/var/data/redmine/files# du -ksh dmsf_index/
+4.0K    dmsf_index/
+root@BGLBG1ENGTVM03:/var/data/redmine/files# du -ksh 2016/
+1.8G    2016/
+root@BGLBG1ENGTVM03:/var/data/redmine/files# du -ksh 2015
+15M     2015
+root@BGLBG1ENGTVM03:/var/data/redmine/files# du -ksh dmsf
+65G     dmsf
+root@BGLBG1ENGTVM03:/var/data/redmine/files# du -ksh 2017
+973M    2017
+root@BGLBG1ENGTVM03:/var/data/redmine/files# du -ksh 2018
+640M    2018
+root@BGLBG1ENGTVM03:/var/data/redmine/files# du -ksh 2019
+235M    2019
+
+77 folders inside files/dmsf
+root@BGLBG1ENGTVM03:/var/data/redmine/files/dmsf# du -ksh p_browns
+2.0G    p_browns
+
+root@BGLBG1ENGTVM03:/var/data/redmine/files/dmsf# du -ksh p_poferries
+1.3G    p_poferries
+
+root@BGLBG1ENGTVM03:/var/data/redmine/files/dmsf# du -ksh p_projectexcellencedashboard
+2.2G    p_projectexcellencedashboard
+
+root@BGLBG1ENGTVM03:/var/data/redmine/files/dmsf# du -ksh p_cloudops_rezopia
+1.4G    p_cloudops_rezopia
+
+root@BGLBG1ENGTVM03:/var/data/redmine/files/dmsf# du -ksh p_ba-backlog
+1.3G    p_ba-backlog
+
+
+
+
+180411131403_19823_OM-DEV-TM-111_-_WBS_Dev_Waterfall.mpp
+180411131431_19834_OM-DEV-TM-98_-_Human_Resource_Skill_Requirement_Training_Plan.xls
+180411131409_19827_OM-DEV-TM-146-Project_Progress_Report-Monthly.pptx
+180411131458_19843_OM-DEV-TM-130_Business_Requirements_Document.doc
+181026170428_27520_D3PP_Bed_Banks_Ireland_test_Preparation_Status_M3_0_18_30_04_2018.msg
+190219161604_35730_Sprint_5_TestReport_V1.7.xlsx
+
+5241810400335782
+5241810400335782
+
+
+Probook backup script Triggered at 3:18 PM 
+
+HDFC Credit card netbanking login details
+
+User id: pc83508195
+password: Hdfc!@#123
+
+Probook backup script completed at 4:12 PM 
+
+
+----------------------------------------------------------------------------
+root@BGLBG1ENGTVM03:/usr/bin# cat probook_backup.sh
+#!/bin/bash
+
+# /usr/bin/PRObook_backup.sh
+# !ensure that this file cannot be read by others, only by root,
+# as it contains probook database credentials!
+DATE=`date +"%Y-%m-%d"`
+FILEDATE=`date +"%Y-%m-%d-%H%M%S"`
+BACKUP_DIR=/home/sonata/backups
+DB_USER="root"
+DB_PASS='P@$$@R3DM!N3'
+REDMINE_HOME=/var/data/redmine
+#SHARE=/windows-probook
+DB_CHARSET=utf8
+
+# delete old backups
+#find $BACKUP_DIR -maxdepth 1 -type d -mtime +6 -exec rm -rf {} \;
+rm -rf $BACKUP_DIR/*
+create backup dir
+mkdir -p $BACKUP_DIR/$DATE
+
+# backup db
+#mysqldump -u $DB_USER -p${DB_PASS} --single-transaction --default-character-set=${DB_CHARSET} redmine | gzip > $BACKUP_DIR/${DATE}/mysql.gz
+mysqldump -u"${DB_USER}" -p"${DB_PASS}" redmine | gzip > $BACKUP_DIR/${DATE}/Redmine_Prod_${FILEDATE}.gz
+
+# backup redmine
+tar -cvzf $BACKUP_DIR/${DATE}/Redmine_Prod_$FILEDATE.tar.gz -C $REDMINE_HOME .
+
+mv $BACKUP_DIR/* $SHARE
+root@BGLBG1ENGTVM03:/usr/bin#
+---------------------------------------------------------------------------------------
+
+started at 12:49
+finished at 13:44
+
+
+Mr. Pinaki Dash
+
+Mr. Baskar Arunachalam
+
+
